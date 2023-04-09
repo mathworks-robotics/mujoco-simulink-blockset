@@ -47,8 +47,7 @@ Open examples/gettingStarted.slx model and click run
 If the installation is successful, you should see a pendulum model running in a separate window and camera stream displayed by Video Viewer block (Computer Vision Toolbox)
 
 ### Blocks
-
-![](mjLib.png){height=250px}
+<img width="250" alt="mjLib" src="https://user-images.githubusercontent.com/8917581/230754094-908a0a52-2c5d-4e8e-bd82-d2dcc553a846.png">
 
 MuJoCo Plant block steps MuJoCo engine, renders visualization window & camera, sets actuator data and outputs sensor readings
 
@@ -59,6 +58,14 @@ Inputs can either be a Simulink Bus or vector.
 Sensors are output as a Simulink Bus.
 
 RGB and Depth buffers from camera are output as vectors. These can be decoded to Simulink image/matrix using the RGB and Depth Parser blocks.
+
+
+https://user-images.githubusercontent.com/8917581/230754110-e98b0ed6-05af-416c-9f39-7e5abf562b25.mp4
+
+
+
+https://user-images.githubusercontent.com/8917581/230754121-8486a61f-a2db-452c-a943-8682172b4f46.mp4
+
 
 ![](getting_started_clip1.mp4 "Block Usage")
 ![](getting_started_clip2.mp4 "Visualization")
