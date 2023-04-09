@@ -62,13 +62,8 @@ RGB and Depth buffers from camera are output as vectors. These can be decoded to
 
 https://user-images.githubusercontent.com/8917581/230754110-e98b0ed6-05af-416c-9f39-7e5abf562b25.mp4
 
-
-
 https://user-images.githubusercontent.com/8917581/230754121-8486a61f-a2db-452c-a943-8682172b4f46.mp4
 
-
-![](getting_started_clip1.mp4 "Block Usage")
-![](getting_started_clip2.mp4 "Visualization")
 
 ## Build Instructions (optional)
 
