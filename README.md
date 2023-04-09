@@ -44,7 +44,7 @@ MATLAB R2022b or newer recommended. Install MATLAB with the above products and t
 ## Usage
 Open examples/gettingStarted.slx model and click run 
 
-If the installation is successful, you should see a pendulum model running in a separate window and camera stream displayed by Video Viewer block (Computer Vision Toolbox)
+If the installation is successful, you should see a pendulum model running in a separate window and camera stream displayed by Video Viewer block (Computer Vision Toolbox). Dedicated graphics card is recommended for best performance.
 
 ### Blocks
 <img width="400" alt="mjLib" src="https://user-images.githubusercontent.com/8917581/230754094-908a0a52-2c5d-4e8e-bd82-d2dcc553a846.png">
