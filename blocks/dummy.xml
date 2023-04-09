@@ -1,0 +1,55 @@
+ <mujoco model="arm_with_cam">
+    <option timestep="0.005" iterations="50" solver="Newton" tolerance="1e-10"/>
+    <visual>
+        <rgba haze=".3 .3 .3 1"/>
+    </visual>
+    <asset>
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".25 .25 .25" rgb2=".3 .3 .3" width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+        <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1" texuniform="true"/>
+    </asset>
+
+    <sensor>
+        <framequat name="imu" objtype="body" objname="armBody" />
+    </sensor>
+
+    <worldbody>
+        <geom name="floor" pos="0 0 0" size="0 0 1" type="plane" material="matplane"/>
+        <light directional="true" diffuse=".7 .7 .8" specular=".2 .2 .2" pos="0 0 1" dir="0 0 -1"/>
+        <camera name="PerspectiveCamera" mode="fixed" pos="0 0 6" euler="0 -20 90"/>
+
+        <body pos="0 0 0">
+            <geom name="base1" type="box" size="0.1 0.1 1"  pos="0 0 1" rgba="0.2 0.6 0.5 1"/>
+
+            <body name="armBody" pos="0.25 0 2">
+                <geom name="arm" type="box" size="0.1 0.8 0.1" pos="0 0.8 0" rgba="0.2 0.6 0.5 1"/>
+                <!-- <joint name="joint" type="hinge" pos="0 0 0" axis="1 0 0" frictionloss="50"/> -->
+                <joint name="joint" type="hinge" pos="0 0 0" axis="1 0 0" frictionloss="0"/>
+                <camera name="camera" mode="fixed" pos="0.2 0 0" euler="0 -90 0"/>
+                <geom name="cameraGeom" type="box" pos="0.15 0 0" size="0.05 0.1 0.1" rgba="0.4 0.2 0.6 1"/>
+            </body>
+        </body>
+
+        <body pos="0 0 0">
+            <geom name="red box" type="box" size="0.5 0.5 0.5"  pos="4 0 1" rgba="1 0 0 1"/>
+            <freejoint/>
+        </body>
+
+        <body pos="0 0 0">
+            <geom name="blue box" type="box" size="0.5 0.5 0.5"  pos="4 0 1.5" rgba="0 1 0 1"/>
+            <freejoint/>
+        </body>
+
+        <body pos="0 0 0">
+            <geom name="green box" type="box" size="0.5 0.5 0.5"  pos="4 0 2" rgba="0 0 1 1"/>
+            <freejoint/>
+        </body>
+
+
+    </worldbody>
+
+    <actuator>
+        <motor name="armMotor" joint="joint" gear="100" />
+    </actuator>
+    
+    <!-- Copyright 2022-2023 The MathWorks, Inc. -->
+</mujoco>
