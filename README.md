@@ -106,7 +106,7 @@ The license is available in the license.txt file within this repository.
 ## Acknowledgements
 Cite this work as,
 
-Manoj Velmurugan.  Simulink Blockset for MuJoCo Simulator (https://github.com/mathworks-robotics/mujoco-simulink-blockset), GitHub. Retrieved March 27, 2023. 
+Manoj Velmurugan.  Simulink Blockset for MuJoCo Simulator (https://github.com/mathworks-robotics/mujoco-simulink-blockset), GitHub. Retrieved April 9, 2023. 
 
 
 Refer to [MuJoCo repository](https://github.com/deepmind/mujoco) for guidelines on citing MuJoCo physics engine.
