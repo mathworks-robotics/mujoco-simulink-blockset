@@ -28,13 +28,13 @@ MATLAB R2022b or newer recommended. Install MATLAB with the above products and t
 
 #### Windows&reg;:
 
-- Download the latest release of this repository
+- Download the latest release for Windows (Release_win64***.zip)
 - Open MATLAB R2022b. In case you are using a older MATLAB release, please follow the build instructions below to rebuild for a particular MATLAB release
 - Run install.m in MATLAB command window. MuJoCo and GLFW libraries will be downloaded and added to MATLAB Path.
 
 #### Ubuntu&reg;:
 
-- Download the latest release of this repository
+- Download the latest release of this repository (will be added soon. Goto build instructions for the time being)
 - Download and install GLFW library from Ubuntu terminal
 
     `sudo apt update && sudo apt install libglfw3 libglfw3-dev`
