@@ -2,7 +2,7 @@
 
 This repository provides a Simulink&reg; C-MEX S-Function block interface to [MuJoCo&trade; physics engine](https://mujoco.org/).
 
-[![View <File Exchange Title> on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/####-file-exchange-title)  
+<!--- [![View <File Exchange Title> on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/####-file-exchange-title)  --->
 
 Useful for,
 1. Robot simulation (mobile, biomimetic, grippers, robotic arm)
@@ -90,7 +90,7 @@ Steps for building/rebuilding the C-MEX S-Function code. These instructions are 
     `$ sudo apt update && sudo apt install build-essential git libglfw3 libglfw3-dev `
 - Clone this repository
 
-    `$ git clone <this_repository.git>`
+    `$ git clone git@github.com:mathworks-robotics/mujoco-simulink-blockset.git
 - Launch MATLAB and open the repository folder. Run the install.m script.
     - `>> install`
 - Open tools/ and run the following commands in MATLAB command Windows
@@ -106,7 +106,7 @@ The license is available in the license.txt file within this repository.
 ## Acknowledgements
 Cite this work as,
 
-Manoj Velmurugan.  Simulink Blockset for MuJoCo Simulator (https://github.com/mathworks-robotics/mujoco-simulink-blockset), GitHub. Retrieved April 9, 2023. 
+Manoj Velmurugan.  Simulink Blockset for MuJoCo Simulator (https://github.com/mathworks-robotics/mujoco-simulink-blockset), GitHub. Retrieved date. 
 
 
 Refer to [MuJoCo repository](https://github.com/deepmind/mujoco) for guidelines on citing MuJoCo physics engine.
@@ -119,6 +119,8 @@ UR5e MJCF XML from [MuJoCo Menagerie](https://github.com/deepmind/mujoco_menager
 
 ## Community Support
 
-You can post your queries on the [MATLAB&reg; Central&trade; File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/####-file-exchange-title) page.
+<!--- You can post your queries on the [MATLAB&reg; Central&trade; File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/####-file-exchange-title) page. --->
+
+You can post your queries on issues/discussions.
 
 Copyright 2023 The MathWorks, Inc.
