@@ -1,8 +1,8 @@
 # Simulink Blockset for MuJoCo Simulator 
 
-This repository provides a Simulink&reg; C-MEX S-Function block interface to [MuJoCo&trade; physics engine](https://mujoco.org/).
+This repository provides a Simulink&reg; C-MEX S-Function block interface to the [MuJoCo&trade; physics engine](https://mujoco.org/).
 
-<!--- [![View <File Exchange Title> on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/####-file-exchange-title)  --->
+[![View <File Exchange Title> on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/128028-mujoco-simulink-blockset)
 
 Useful for,
 1. Robot simulation (mobile, biomimetic, grippers, robotic arm)
@@ -20,7 +20,7 @@ Useful for,
 - Control System Toolbox&trade; (optional)
 - Simulink&reg; Coder&trade; (optional)
 
-MATLAB R2022b or newer recommended. Install MATLAB with the above products and then proceed to setting up MuJoCo blocks.
+MATLAB R2022b or newer is recommended. Install MATLAB with the above products and then proceed to set up MuJoCo blocks.
 
 *Note - You may need to rebuild the S-Function if you are using an older release of MATLAB*.
 
@@ -28,12 +28,14 @@ MATLAB R2022b or newer recommended. Install MATLAB with the above products and t
 
 #### Windows&reg;:
 
-- Download the latest release for Windows (Release_win64***.zip)
-- Open MATLAB R2022b. In case you are using a older MATLAB release, please follow the build instructions below to rebuild for a particular MATLAB release
-- Run install.m in MATLAB command window. MuJoCo and GLFW libraries will be downloaded and added to MATLAB Path.
+- Download the [latest release for Windows](https://github.com/mathworks-robotics/mujoco-simulink-blockset/releases/latest) (Release_win64***.zip)
+- Open MATLAB R2022b. In case you are using an older MATLAB release, please follow the build instructions below to rebuild for a particular MATLAB release
+- Run the install.m in the MATLAB command window. MuJoCo and GLFW libraries will be downloaded and added to MATLAB Path.
 
 #### Ubuntu&reg;:
 
+Ubuntu prebuilt release artifacts will be added later. Goto 'Build Instructions' below to build from the source code.
+<!--- 
 - Download the latest release of this repository (will be added soon. Goto build instructions for the time being)
 - Download and install GLFW library from Ubuntu terminal
 
@@ -41,23 +43,30 @@ MATLAB R2022b or newer recommended. Install MATLAB with the above products and t
 - Open MATLAB R2022b. In case you are using a older MATLAB release, please follow the build instructions below to rebuild for a particular MATLAB release
 - Run install.m in MATLAB command window. MuJoCo library will be downloaded and added to MATLAB Path.
 
+--->
+
+#### Note:
+*The 'Download' button from File Exchange only downloads the source code. If you use the download button, ensure that you run the 'Build Instructions' before continuing.*
+    
 ## Usage
 Open examples/gettingStarted.slx model and click run 
 
-If the installation is successful, you should see a pendulum model running in a separate window and camera stream displayed by Video Viewer block (Computer Vision Toolbox). Dedicated graphics card is recommended for best performance.
+If the installation is successful, you should see a pendulum model running in a separate window and camera streams displayed by Video Viewer blocks (Computer Vision Toolbox).
+
+*A dedicated graphics card is recommended for the best performance. Disable Video Viewer blocks if the model runs slow*
 
 ### Blocks
 <img width="400" alt="mjLib" src="https://user-images.githubusercontent.com/8917581/230754094-908a0a52-2c5d-4e8e-bd82-d2dcc553a846.png">
 
-MuJoCo Plant block steps MuJoCo engine, renders visualization window & camera, sets actuator data and outputs sensor readings
+MuJoCo Plant block steps MuJoCo engine, renders visualization window & camera, sets actuator data, and outputs sensor readings
 
-It takes an XML (MJCF) as the main block parameter. It auto detects the inputs, sensors, cameras from XML and sets the ports, sample time and other internal configuration.
+It takes an XML (MJCF) as the main block parameter. It auto-detects the inputs, sensors, and cameras from XML to configure the block ports and sample time.
 
-Inputs can either be a Simulink Bus or vector.
+Inputs can either be a Simulink Bus or a vector.
 
 Sensors are output as a Simulink Bus.
 
-RGB and Depth buffers from camera are output as vectors. These can be decoded to Simulink image/matrix using the RGB and Depth Parser blocks.
+RGB and Depth buffers from cameras are output as vectors. These can be decoded to Simulink image/matrix using the RGB and Depth Parser blocks.
 
 
 https://user-images.githubusercontent.com/8917581/230754110-e98b0ed6-05af-416c-9f39-7e5abf562b25.mp4
@@ -90,7 +99,7 @@ Steps for building/rebuilding the C-MEX S-Function code. These instructions are 
     `$ sudo apt update && sudo apt install build-essential git libglfw3 libglfw3-dev `
 - Clone this repository
 
-    `$ git clone git@github.com:mathworks-robotics/mujoco-simulink-blockset.git
+    `$ git clone git@github.com:mathworks-robotics/mujoco-simulink-blockset.git`
 - Launch MATLAB and open the repository folder. Run the install.m script.
     - `>> install`
 - Open tools/ and run the following commands in MATLAB command Windows
@@ -103,13 +112,13 @@ Steps for building/rebuilding the C-MEX S-Function code. These instructions are 
 
 The license is available in the license.txt file within this repository.
 
-## Acknowledgements
+## Acknowledgments
 Cite this work as,
 
 Manoj Velmurugan.  Simulink Blockset for MuJoCo Simulator (https://github.com/mathworks-robotics/mujoco-simulink-blockset), GitHub. Retrieved date. 
 
 
-Refer to [MuJoCo repository](https://github.com/deepmind/mujoco) for guidelines on citing MuJoCo physics engine.
+Refer to the [MuJoCo repository](https://github.com/deepmind/mujoco) for guidelines on citing the MuJoCo physics engine.
 
 The sample codes and API documentation provided for [MuJoCo](https://mujoco.readthedocs.io/en/latest/overview.html) and [GLFW](https://www.glfw.org/documentation) were used as reference material during development.
 
@@ -121,6 +130,6 @@ UR5e MJCF XML from [MuJoCo Menagerie](https://github.com/deepmind/mujoco_menager
 
 <!--- You can post your queries on the [MATLAB&reg; Central&trade; File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/####-file-exchange-title) page. --->
 
-You can post your queries on issues/discussions.
+You can post your queries in the discussions section.
 
 Copyright 2023 The MathWorks, Inc.
