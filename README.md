@@ -25,31 +25,20 @@ MATLAB R2022b or newer is recommended. Install MATLAB with the above products an
 *Note - You may need to rebuild the S-Function if you are using an older release of MATLAB*.
 
 ### Simulink Blockset for MuJoCo
-
-#### Windows&reg;:
-
-- Download the [latest release for Windows](https://github.com/mathworks-robotics/mujoco-simulink-blockset/releases/latest) (Release_win64***.zip)
-- Open MATLAB R2022b. In case you are using an older MATLAB release, please follow the build instructions below to rebuild for a particular MATLAB release
-- Run the install.m in the MATLAB command window. MuJoCo and GLFW libraries will be downloaded and added to MATLAB Path.
-
-#### Ubuntu&reg;:
-
-Ubuntu prebuilt release artifacts will be added later. Goto 'Build Instructions' below to build from the source code.
-<!--- 
-- Download the latest release of this repository (will be added soon. Goto build instructions for the time being)
-- Download and install GLFW library from Ubuntu terminal
-
+    
+- (Linux users) Install GLFW library from Ubuntu terminal
+    
     `sudo apt update && sudo apt install libglfw3 libglfw3-dev`
-- Open MATLAB R2022b. In case you are using a older MATLAB release, please follow the build instructions below to rebuild for a particular MATLAB release
-- Run install.m in MATLAB command window. MuJoCo library will be downloaded and added to MATLAB Path.
-
---->
-
-#### Note:
-*The 'Download' button from File Exchange only downloads the source code. If you use the download button, ensure that you run the 'Build Instructions' before continuing.*
+- Download the latest release of this repository (MATLAB Toolbox - MLTBX file)
+- Open MATLAB R2022b or higher and install the downloaded MATLAB Toolbox file
+- Run the setup function packaged in the toolbox. MuJoCo (and GLFW for Windows users) library is downloaded and added to MATLAB path.
+    
+    `>>mujoco_interface_setup`
     
 ## Usage
-Open examples/gettingStarted.slx model and click run 
+`>>mj_gettingStarted`
+    
+Open the example model and run it in normal simulation mode.
 
 If the installation is successful, you should see a pendulum model running in a separate window and camera streams displayed by Video Viewer blocks (Computer Vision Toolbox).
 
@@ -84,6 +73,8 @@ Steps for building/rebuilding the C-MEX S-Function code. These instructions are 
   - Microsoft&reg; Visual Studio&reg; 2022 or higher (recommended)
   - (or) [MinGW (GCC 12.2.0 or higher)](https://community.chocolatey.org/packages/mingw)
 - Clone this repository
+    
+    `$ git clone git@github.com:mathworks-robotics/mujoco-simulink-blockset.git`
 - Launch MATLAB and open the repository folder
     - `>> install`
 - Open tools/ 
