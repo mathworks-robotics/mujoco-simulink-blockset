@@ -8,6 +8,7 @@ MJ_VER = '2.3.2';
 GLFW_VER = '3.3.7';
 urlsList = fileread("tools/links.json");
 blockPath = './blocks/';
+examplePath = './examples/';
 srcPath = './src/';
 
 glfwRunTimeLib = 'lib-static-ucrt';
@@ -30,9 +31,10 @@ end
 
 %% MATLAB PATH ADDITION
 addpath(blockPath);
+addpath(examplePath);
 savepath
 disp(' ')
-disp("MuJoCo block library added to MATLAB path and saved");
+disp("MuJoCo block library and examples added to MATLAB path and saved");
 
 %% SHARED LIB COPY PATH ADDITION
 % Alternatively you can add the dll location to system path
