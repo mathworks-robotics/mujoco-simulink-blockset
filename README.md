@@ -44,6 +44,8 @@ If the installation is successful, you should see a pendulum model running in a 
 
 *A dedicated graphics card is recommended for the best performance. Disable Video Viewer blocks if the model runs slow*
 
+*(Linux users) - In case MATLAB crashes, it may be due to a glibc bug. Please follow this [bug report](https://www.mathworks.com/support/bugreports/2632298) for a workaround!*
+
 ### Blocks
 <img width="400" alt="mjLib" src="https://user-images.githubusercontent.com/8917581/230754094-908a0a52-2c5d-4e8e-bd82-d2dcc553a846.png">
 
