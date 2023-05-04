@@ -100,6 +100,9 @@ Steps for building/rebuilding the C-MEX S-Function code. These instructions are 
     - `>> mex -setup c++`
     - `>> build`
 
+## Tips and tricks
+- ***Code generation*** - The MuJoCo Plant block supports code generation (Simulink Coder) and monitor and tune for host target. Refer to mj_monitorTune.slx for more info.
+- ***Performance improvement*** - In case you want to reduce the mask initialization overhead, you can directly use the underlying S-Function. Select the MuJoCo Plant block and Ctrl+U to look under the subsystem mask. Make sure to call the initialization functions (whenever the MJCF XML model changes).
 
 ## License
 
