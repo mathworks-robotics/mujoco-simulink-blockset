@@ -5,7 +5,7 @@ This repository provides a Simulink&reg; C-MEX S-Function block interface to the
 [![View <File Exchange Title> on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/128028-mujoco-simulink-blockset)
 
 Useful for,
-1. Robot simulation (mobile, biomimetic, grippers, robotic arm)
+1. Robot simulation (mobile, biomimetics, grippers, robotic arm)
 2. Development of autonomous algorithms using classical or machine learning based approaches
 3. Camera (RGB, Depth) rendering
 
@@ -100,7 +100,7 @@ Steps for building/rebuilding the C-MEX S-Function code. These instructions are 
     - `>> mex -setup c++`
     - `>> build`
 
-## Tips and tricks
+## Tips and Tricks
 - ***Code generation*** - The MuJoCo Plant block supports code generation (Simulink Coder) and monitor and tune for host target. Refer to mj_monitorTune.slx for more info.
 - ***Performance improvement*** - In case you want to reduce the mask initialization overhead, you can directly use the underlying S-Function. Select the MuJoCo Plant block and Ctrl+U to look under the subsystem mask. Make sure to call the initialization functions (whenever the MJCF XML model changes).
 
