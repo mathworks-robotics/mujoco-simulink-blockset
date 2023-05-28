@@ -6,7 +6,7 @@ This repository provides a Simulink&reg; C-MEX S-Function block interface to the
 
 Useful for,
 1. Robot simulation (mobile, biomimetics, grippers, robotic arm)
-2. Development of autonomous algorithms using classical or machine learning based approaches
+2. Development of autonomous algorithms
 3. Camera (RGB, Depth) rendering
 
 ## Installation Instructions
