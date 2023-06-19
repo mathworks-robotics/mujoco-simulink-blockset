@@ -4,7 +4,7 @@ function install()
 %% Run this script once and follow the instructions
 % Make sure you run this script from this folder.
 
-MJ_VER = '2.3.2';
+MJ_VER = '2.3.5';
 GLFW_VER = '3.3.7';
 urlsList = fileread("tools/links.json");
 blockPath = './blocks/';

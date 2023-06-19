@@ -78,8 +78,7 @@ private:
     // disable copy constructor
     MujocoModelInstance(const MujocoModelInstance &mi);
 public:
-    std::mutex dMutex; // mutex for model data access
-    binarySemp cameraSync; // semp for syncing main thread and render camera thread 
+    std::mutex dMutex; // mutex for model data access 
 
     // cameras in the model instance
     std::vector<std::shared_ptr<MujocoGUI>> offscreenCam;
@@ -108,6 +107,8 @@ public:
     double lastRenderTime = 0;
     double cameraRenderInterval = 0.020;
     std::atomic<bool> isCameraDataNew = false;
+    binarySemp cameraSync; // semp for syncing main thread and render camera thread
+    std::atomic<bool> shouldCameraRenderNow = false;
 
     void step(std::vector<double> u);
     std::vector<double> getSensor(unsigned index);

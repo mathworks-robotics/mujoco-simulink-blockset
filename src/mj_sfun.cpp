@@ -442,17 +442,7 @@ static void mdlUpdate(SimStruct *S, int_T tid)
 
     auto &miTemp = sd.mi[miIndex]; 
 
-    if(miTemp->offscreenCam.size() != 0)
-    {
-        if( (miTemp->get_d()->time - miTemp->lastRenderTime) > miTemp->cameraRenderInterval)
-        {
-            // maintain camera and physics in sync at required camera sample time
-            miTemp->cameraSync.acquire(); // blocking till offscreen buffer is rendered
-            miTemp->lastRenderTime = miTemp->get_d()->time;
-        }
-    }
-
-    // set control inputs
+    // Step the simulation by one discrete time step. Outputs (sensors and camera) get reflected in the next step
     miTemp->step(uVec);
 }
 
@@ -525,7 +515,6 @@ void renderingThreadFcn()
     while(1)
     {
         // Visualization window(s)
-        int activeCount = 0;
         for(int index=0; index<sd.mg.size(); index++)
         {
             auto duration = std::chrono::steady_clock::now() - sd.mg[index]->lastRenderClockTime;
@@ -533,7 +522,6 @@ void renderingThreadFcn()
             {
                 if(sd.mg[index]->loopInThread() == 0) 
                 {
-                    activeCount++;
                     sd.mg[index]->lastRenderClockTime = std::chrono::steady_clock::now();
                 }
             }
@@ -544,23 +532,25 @@ void renderingThreadFcn()
         {   
             auto &miTemp = sd.mi[miIndex];
 
-            if(miTemp->cameraSync.check_availability() == false)
+            if(miTemp->shouldCameraRenderNow == true)
             {
                 // if rendering is already done and not consumed, dont do again
                 for(int camIndex = 0; camIndex<miTemp->offscreenCam.size(); camIndex++)
                 {
-                    if(miTemp->offscreenCam[camIndex]->loopInThread() == 0)
+                    auto status = miTemp->offscreenCam[camIndex]->loopInThread();
+                    if(status == 0)
                     {
-                        activeCount++;
-                        miTemp->isCameraDataNew = true;
+                        miTemp->lastRenderTime = miTemp->get_d()->time;
+                        miTemp->isCameraDataNew = true; // Used to indicate that a new data is available for copying into blk output
                     }
                 }
+                miTemp->shouldCameraRenderNow = false;
                 miTemp->cameraSync.release();
+                
             }
         }
         // If there is nothing to render, donot keep spinning while loop
         if(sd.signalThreadExit == true) break;
-        // if(activeCount == 0) break;
     }
 
     // Release visualization resources
@@ -584,16 +574,17 @@ void renderingThreadFcn()
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
     int miIndex = ssGetIWorkValue(S, MI_IW_IDX);
+    auto &miTemp = sd.mi[miIndex]; 
     
     // Copy sensors to output
     real_T *y = ssGetOutputPortRealSignal(S, SENSOR_PORT_INDEX);
     int_T ny = ssGetOutputPortWidth(S, SENSOR_PORT_INDEX);
     int_T index = 0;
 
-    auto nSensors = sd.mi[miIndex]->si.count;
+    auto nSensors = miTemp->si.count;
     for(int_T i=0; i<nSensors; i++)
     {
-        vector<double> yVec = sd.mi[miIndex]->getSensor(i);
+        vector<double> yVec = miTemp->getSensor(i);
         for(auto elem: yVec)
         {
             y[index] = elem;
@@ -603,15 +594,29 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     }
     y[index] = static_cast<double>(nSensors); // last element is a dummy to handle empty sensor case
 
+    // Render camera based on the current states. mdlupdate will be called after mdloutputs and update moves the time tk to tk+1
+    if(miTemp->offscreenCam.size() != 0)
+    {
+        double elapsedTimeSinceRender = miTemp->get_d()->time - miTemp->lastRenderTime;
+        if( elapsedTimeSinceRender > (miTemp->cameraRenderInterval-0.00001) )
+        {
+            // maintain camera and physics in sync at required camera sample time
+            miTemp->shouldCameraRenderNow = true;
+            miTemp->cameraSync.acquire(); // blocking till offscreen buffer is rendered
+
+            // ssPrintf("sim time=%lf & render time=%lf\n", miTemp->get_d()->time, miTemp->lastRenderTime);
+        }
+    }
+
     // Copy camera to output
     uint8_T *rgbOut = (uint8_T *) ssGetOutputPortSignal(S, RGB_PORT_INDEX);
     real32_T *depthOut = (real32_T *) ssGetOutputPortSignal(S, DEPTH_PORT_INDEX);
-    if(sd.mi[miIndex]->isCameraDataNew)
+    if(miTemp->isCameraDataNew)
     {
         //avoid unnecessary memcpy. copy only when there is new data. Rest of the time steps, old data will be output
-        sd.mi[miIndex]->getCameraRGB((uint8_t *) rgbOut);
-        sd.mi[miIndex]->getCameraDepth((float *) depthOut);
-        sd.mi[miIndex]->isCameraDataNew = false;
+        miTemp->getCameraRGB((uint8_t *) rgbOut);
+        miTemp->getCameraDepth((float *) depthOut);
+        miTemp->isCameraDataNew = false;
     }
 }
 
