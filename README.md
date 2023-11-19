@@ -34,6 +34,8 @@ MATLAB R2022b or newer is recommended. Install MATLAB with the above products an
 - Run the setup function packaged in the toolbox. MuJoCo (and GLFW for Windows users) library is downloaded and added to MATLAB path.
     
     `>>mujoco_interface_setup`
+- (Linux users) The default pathdef.m is likely not saveable in Linux. Save pathdef.m to new location as given in this [MATLAB answer](https://www.mathworks.com/matlabcentral/answers/1653435-how-to-use-savepath-for-adding-path-to-pathdef-m-in-linux).
+    `savepath ~/Documents/MATLAB/pathdef.m`
     
 ## Usage
 `>>mj_gettingStarted`
