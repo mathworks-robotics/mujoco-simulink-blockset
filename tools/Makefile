@@ -63,7 +63,7 @@ CPP_FLAG=COMPFLAGS="/EHsc /std:c++17"
 LINKFLAGS=
 endif
 
-LINKER_OBJ_LINUX=-L$(MJ_PATH)/lib -l$(MJ_LIB_NAME) -lGL -lglfw
+LINKER_OBJ_LINUX=-L$(MJ_PATH)/lib -L/usr/local/lib -l$(MJ_LIB_NAME) -lGL -lglfw
 
 # MEX COMMAND
 BUILD_CMD_COMMON=$(MEX) $(SRC_COMMON) $(INC_PATH) -outdir $(OUT_DIR)
