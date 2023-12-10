@@ -130,7 +130,7 @@ Building glfw from source ([glfw main - commit id](https://github.com/glfw/glfw/
 - In Cmake Gui settings - Select "BUILD_SHARED_LIBS" as well
 - Configure and then generate
 - Open a terminal in the build directory and run $make in terminal
-- Once build goes through without any error, run $make install in terminal
+- Once build goes through without any error, run $sudo make install in terminal
 - sudo ldconfig (to refresh linker cache)
 - Follow the build instructions for mujoco-simulink-blockset
 
