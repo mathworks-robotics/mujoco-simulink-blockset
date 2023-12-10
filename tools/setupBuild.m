@@ -20,6 +20,8 @@ if ispc
     fprintf(fileID, "WIN_COMPILER=%s\n", selectedCompilerWin);
     fprintf(fileID, "SET_GLFW_INC_PATH=-I%s\n", getUnixPath( getpref('mujoco', 'glfwIncPath')));
     fprintf(fileID, "SET_GLFW_IMPORTLIB_PATH=%s\n", getUnixPath( getpref('mujoco', 'glfwImportLibPath')) );
+else
+    fprintf(fileID, "SET_GLFW_INC_PATH=-I/usr/local/include\n");
 end
 disp('compiler selection and GLFW inc/import path setup done')
 mjLibName = "mujoco";
