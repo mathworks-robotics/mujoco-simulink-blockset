@@ -106,8 +106,21 @@ Steps for building/rebuilding the C-MEX S-Function code. These instructions are 
 - ***Code generation*** - The MuJoCo Plant block supports code generation (Simulink Coder) and monitor and tune for host target. Refer to mj_monitorTune.slx for more info.
 - ***Performance improvement*** - In case you want to reduce the mask initialization overhead, you can directly use the underlying S-Function. Select the MuJoCo Plant block and Ctrl+U to look under the subsystem mask. Make sure to call the initialization functions (whenever the MJCF XML model changes).
 
+## Limitations:
+
+Linux Compatibility:
+
+This blockset is only tested in Ubuntu 22.04 and Ubuntu 20.04. Other Ubuntu versions and distros are not supported.
+
+### Software OpenGL:
+
+This blockset does not work with software OpenGL. You can check whether MATLAB is using hardware GL with >>opengl info command.
+
+In case you face graphics related issues, please try updating GLFW following the instructions given below!
+
 ## Bugs/Workarounds
-### GLFW 
+
+### Rebuild GLFW From Source 
 
 In case MATLAB crashes while running getting started model and you see the following lines in stack trace,
 
