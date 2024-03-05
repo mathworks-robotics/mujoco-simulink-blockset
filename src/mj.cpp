@@ -111,6 +111,7 @@ sensorInterface MujocoModelInstance::getSensorInterface()
         char *namePointer = m->names + m->name_sensoradr[index];
         std::string str(namePointer);
         names.push_back(str);
+        
     }
     si.names = names;
 
@@ -123,14 +124,7 @@ sensorInterface MujocoModelInstance::getSensorInterface()
         si.scalarCount += sensor_dim;
     }
     si.dim = dim;
-
-    std::vector<unsigned> addr;
-    for (unsigned index = 0; index < si.count; index++)
-    {
-        unsigned sensor_addr = m->sensor_adr[index];
-        addr.push_back(sensor_addr);
-    }
-    si.addr = addr;
+ // Sensor adressing part removed.
     return si;
 }
 
@@ -198,17 +192,17 @@ void MujocoModelInstance::step(std::vector<double> u)
     dMutex.unlock();
 }
 
-std::vector<double> MujocoModelInstance::getSensor(unsigned index)
+std::vector<double> MujocoModelInstance::getSensor()
 {
     std::vector<double> sensorData;
 
     dMutex.lock();
-    auto addrStart = si.addr[index];
-    auto addrEnd = addrStart + si.dim[index] - 1;
-    for (unsigned i = addrStart; i <= addrEnd; i++)
+
+    for (unsigned i = 0; i < si.count; i++)
     {
         sensorData.push_back(d->sensordata[i]);
     }
+
     dMutex.unlock();
     return sensorData;
 }
@@ -489,6 +483,7 @@ void MujocoGUI::refreshScene(MujocoModelInstance* mi)
         glfwGetFramebufferSize(window, &viewport.width, &viewport.height);
     }
     mi->dMutex.lock(); // lock before using simulation data
+    
     mjv_updateScene(mi->get_m(), mi->get_d(), &opt, NULL, &cam, mjCAT_ALL, &scn);
     mi->dMutex.unlock();
 }
@@ -530,8 +525,8 @@ std::size_t sensorInterface::hash()
     str += "\ndim=";
     for(auto& dimItem: dim) str += to_string(dimItem) + ",";
 
-    str += "\naddr=";
-    for(auto& addrItem: addr) str += to_string(addrItem) + ",";
+/*     str += "\naddr=";
+    for(auto& addrItem: addr) str += to_string(addrItem) + ","; */
 
     std::hash<std::string> hasher;
     return hasher(str);
