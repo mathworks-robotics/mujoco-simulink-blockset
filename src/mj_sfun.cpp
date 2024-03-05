@@ -579,20 +579,18 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     // Copy sensors to output
     real_T *y = ssGetOutputPortRealSignal(S, SENSOR_PORT_INDEX);
     int_T ny = ssGetOutputPortWidth(S, SENSOR_PORT_INDEX);
-    int_T index = 0;
 
     auto nSensors = miTemp->si.count;
+
+    vector<double> yVec = miTemp->getSensor();
     for(int_T i=0; i<nSensors; i++)
     {
-        vector<double> yVec = miTemp->getSensor(i);
-        for(auto elem: yVec)
-        {
-            y[index] = elem;
-            index++;
-            // TODO add a check in case index exceeds the allowed limit
-        }
+
+        y[i] = yVec[i];
+            
     }
-    y[index] = static_cast<double>(nSensors); // last element is a dummy to handle empty sensor case
+
+    y[yVec.size()] = static_cast<double>(nSensors); // last element is a dummy to handle empty sensor case
 
     // Render camera based on the current states. mdlupdate will be called after mdloutputs and update moves the time tk to tk+1
     if(miTemp->offscreenCam.size() != 0)

@@ -27,7 +27,7 @@ class sensorInterface
     unsigned scalarCount; // number of individual data count. imu and rangefinder would give 4 scalars
     std::vector<std::string> names;
     std::vector<unsigned> dim;
-    std::vector<unsigned> addr;
+    // Sensor adress vector removed
 
     std::size_t hash();
 };
@@ -111,7 +111,7 @@ public:
     std::atomic<bool> shouldCameraRenderNow = false;
 
     void step(std::vector<double> u);
-    std::vector<double> getSensor(unsigned index);
+    std::vector<double> getSensor();
     size_t getCameraRGB(uint8_t *buffer);
     void getCameraDepth(float *buffer);
 };
