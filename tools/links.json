@@ -1,48 +1,6 @@
 {
     "files": [
         {
-            "name": "mujoco",
-            "arch": "win64",
-            "version": "2.1.5",
-            "downloadLink": "https://github.com/deepmind/mujoco/releases/download/2.1.5/mujoco-2.1.5-windows-x86_64.zip"
-        },
-        {
-            "name": "mujoco",
-            "arch": "glnxa64",
-            "version": "2.1.5",
-            "downloadLink": "https://github.com/deepmind/mujoco/releases/download/2.1.5/mujoco-2.1.5-linux-x86_64.tar.gz"
-        },
-        {
-            "name": "mujoco",
-            "arch": "maci64",
-            "version": "2.1.5",
-            "downloadLink": "https://github.com/deepmind/mujoco/releases/download/2.1.5/mujoco-2.1.5-macos-universal2.dmg"
-        },
-        {
-            "name": "mujoco",
-            "arch": "win64",
-            "version": "2.3.2",
-            "downloadLink": "https://github.com/deepmind/mujoco/releases/download/2.3.2/mujoco-2.3.2-windows-x86_64.zip"
-        },
-        {
-            "name": "mujoco",
-            "arch": "glnxa64",
-            "version": "2.3.2",
-            "downloadLink": "https://github.com/deepmind/mujoco/releases/download/2.3.2/mujoco-2.3.2-linux-x86_64.tar.gz"
-        },
-        {
-            "name": "mujoco",
-            "arch": "win64",
-            "version": "2.3.5",
-            "downloadLink": "https://github.com/deepmind/mujoco/releases/download/2.3.5/mujoco-2.3.5-windows-x86_64.zip"
-        },
-        {
-            "name": "mujoco",
-            "arch": "glnxa64",
-            "version": "2.3.5",
-            "downloadLink": "https://github.com/deepmind/mujoco/releases/download/2.3.5/mujoco-2.3.5-linux-x86_64.tar.gz"
-        },
-        {
             "name": "glfw",
             "arch": "win64",
             "version": "3.3.7",
