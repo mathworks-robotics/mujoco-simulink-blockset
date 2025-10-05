@@ -86,7 +86,7 @@ https://user-images.githubusercontent.com/8917581/230754110-e98b0ed6-05af-416c-9
 https://user-images.githubusercontent.com/8917581/230754121-8486a61f-a2db-452c-a943-8682172b4f46.mp4
 
 ## Tips and Tricks
-- ***MuJoCo version update*** - Open install.m and change MJ_VER to desired MuJoCo physics engine version. 
+- ***MuJoCo version update*** - Open install.m and change MJ_VER to the desired MuJoCo physics engine version. 
 - ***Code generation*** - The MuJoCo Plant block supports code generation (Simulink Coder) and monitor and tune for host target. Refer to mj_monitorTune.slx for more info.
 - ***Performance improvement*** - In case you want to reduce the mask initialization overhead, you can directly use the underlying S-Function. Select the MuJoCo Plant block and Ctrl+U to look under the subsystem mask. Make sure to call the initialization functions (whenever the MJCF XML model changes).
 
