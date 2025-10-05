@@ -21,7 +21,7 @@ MATLAB R2022b or newer is recommended. Install MATLAB with the above products an
 
 ## Build Instructions (mandatory)
 
-Steps for building/rebuilding the C-MEX S-Function code. These instructions are only required if you are cloning the repository instead of downloading the release.
+Steps for building/rebuilding the C-MEX S-Function code.
 
 ### Windows:
 
