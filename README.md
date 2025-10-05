@@ -29,45 +29,16 @@ MATLAB R2022b or newer is recommended. Install MATLAB with the above products an
 - (Linux users) Install GLFW library from Ubuntu terminal
     
     `sudo apt update && sudo apt install libglfw3 libglfw3-dev`
-- Download the latest release of this repository (MATLAB Toolbox - MLTBX file)
-- Open MATLAB R2022b or higher and install the downloaded MATLAB Toolbox file
-- Run the setup function packaged in the toolbox. MuJoCo (and GLFW for Windows users) library is downloaded and added to MATLAB path.
+- Download the latest source zip of this repository and store it in some location (preferably not in Downloads)
+- Open MATLAB R2022b or higher and open the repo folder. 
+- Run the setup function packaged in the toolbox. MuJoCo (and GLFW for Windows users) library is automatically downloaded and added to MATLAB path.
     
-    `>>mujoco_interface_setup`
+    `>>install`
 - (Linux users) The default pathdef.m is likely not saveable in Linux. Save pathdef.m to new location as given in this [MATLAB answer](https://www.mathworks.com/matlabcentral/answers/1653435-how-to-use-savepath-for-adding-path-to-pathdef-m-in-linux).
     `savepath ~/Documents/MATLAB/pathdef.m`
-    
-## Usage
-`>>mj_gettingStarted`
-    
-Open the example model and run it in normal simulation mode.
+- Now follow the build instructions provided below. The prebuilt binaries are no longer shipped.
 
-If the installation is successful, you should see a pendulum model running in a separate window and camera streams displayed by Video Viewer blocks (Computer Vision Toolbox).
-
-*A dedicated graphics card is recommended for the best performance. Disable Video Viewer blocks if the model runs slow*
-
-*(Linux users) - In case MATLAB crashes, it may be due to a glibc bug. Please follow this [bug report](https://www.mathworks.com/support/bugreports/2632298) for a workaround!*
-
-### Blocks
-<img width="400" alt="mjLib" src="https://user-images.githubusercontent.com/8917581/230754094-908a0a52-2c5d-4e8e-bd82-d2dcc553a846.png">
-
-MuJoCo Plant block steps MuJoCo engine, renders visualization window & camera, sets actuator data, and outputs sensor readings
-
-It takes an XML (MJCF) as the main block parameter. It auto-detects the inputs, sensors, and cameras from XML to configure the block ports and sample time.
-
-Inputs can either be a Simulink Bus or a vector.
-
-Sensors are output as a Simulink Bus.
-
-RGB and Depth buffers from cameras are output as vectors. These can be decoded to Simulink image/matrix using the RGB and Depth Parser blocks.
-
-
-https://user-images.githubusercontent.com/8917581/230754110-e98b0ed6-05af-416c-9f39-7e5abf562b25.mp4
-
-https://user-images.githubusercontent.com/8917581/230754121-8486a61f-a2db-452c-a943-8682172b4f46.mp4
-
-
-## Build Instructions (optional)
+## Build Instructions (mandatory)
 
 Steps for building/rebuilding the C-MEX S-Function code. These instructions are only required if you are cloning the repository instead of downloading the release.
 
@@ -101,6 +72,35 @@ Steps for building/rebuilding the C-MEX S-Function code. These instructions are 
     - `>> setupBuild`
     - `>> mex -setup c++`
     - `>> build`
+
+## Usage
+`>>mj_gettingStarted`
+    
+Open the example model and run it in normal simulation mode.
+
+If the installation is successful, you should see a pendulum model running in a separate window and camera streams displayed by Video Viewer blocks (Computer Vision Toolbox).
+
+*A dedicated graphics card is recommended for the best performance. Disable Video Viewer blocks if the model runs slow*
+
+*(Linux users) - In case MATLAB crashes, it may be due to a glibc bug. Please follow this [bug report](https://www.mathworks.com/support/bugreports/2632298) for a workaround!*
+
+### Blocks
+<img width="400" alt="mjLib" src="https://user-images.githubusercontent.com/8917581/230754094-908a0a52-2c5d-4e8e-bd82-d2dcc553a846.png">
+
+MuJoCo Plant block steps MuJoCo engine, renders visualization window & camera, sets actuator data, and outputs sensor readings
+
+It takes an XML (MJCF) as the main block parameter. It auto-detects the inputs, sensors, and cameras from XML to configure the block ports and sample time.
+
+Inputs can either be a Simulink Bus or a vector.
+
+Sensors are output as a Simulink Bus.
+
+RGB and Depth buffers from cameras are output as vectors. These can be decoded to Simulink image/matrix using the RGB and Depth Parser blocks.
+
+
+https://user-images.githubusercontent.com/8917581/230754110-e98b0ed6-05af-416c-9f39-7e5abf562b25.mp4
+
+https://user-images.githubusercontent.com/8917581/230754121-8486a61f-a2db-452c-a943-8682172b4f46.mp4
 
 ## Tips and Tricks
 - ***Code generation*** - The MuJoCo Plant block supports code generation (Simulink Coder) and monitor and tune for host target. Refer to mj_monitorTune.slx for more info.
