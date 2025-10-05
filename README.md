@@ -6,9 +6,7 @@ This repository provides a Simulink&reg; C-MEX S-Function block interface to the
 
 This blockset enables an easy access to MuJoCo Physics Engine and exposes the GUI, control inputs, sensors and RGB/Depth Cameras from the engine. 
 
-## Installation Instructions
-
-### MathWorks&reg; Products (https://www.mathworks.com)
+## MathWorks&reg; Products (https://www.mathworks.com)
 
 - MATLAB&reg; (required)
 - Simulink&reg; (required)
