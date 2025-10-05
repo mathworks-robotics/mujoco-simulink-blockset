@@ -4,10 +4,7 @@ This repository provides a Simulink&reg; C-MEX S-Function block interface to the
 
 [![View <File Exchange Title> on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/128028-mujoco-simulink-blockset)
 
-Useful for,
-1. Robot simulation (mobile, biomimetics, grippers, robotic arm)
-2. Development of autonomous algorithms
-3. Camera (RGB, Depth) rendering
+This blockset enables an easy access to MuJoCo Physics Engine and exposes the GUI, control inputs, sensors and RGB/Depth Cameras from the engine. 
 
 ## Installation Instructions
 
@@ -22,22 +19,6 @@ Useful for,
 
 MATLAB R2022b or newer is recommended. Install MATLAB with the above products and then proceed to set up MuJoCo blocks.
 
-*Note - You may need to rebuild the S-Function if you are using an older release of MATLAB*.
-
-### Simulink Blockset for MuJoCo
-    
-- (Linux users) Install GLFW library from Ubuntu terminal
-    
-    `sudo apt update && sudo apt install libglfw3 libglfw3-dev`
-- Download the latest source zip of this repository and store it in some location (preferably not in Downloads)
-- Open MATLAB R2022b or higher and open the repo folder. 
-- Run the setup function packaged in the toolbox. MuJoCo (and GLFW for Windows users) library is automatically downloaded and added to MATLAB path.
-    
-    `>>install`
-- (Linux users) The default pathdef.m is likely not saveable in Linux. Save pathdef.m to new location as given in this [MATLAB answer](https://www.mathworks.com/matlabcentral/answers/1653435-how-to-use-savepath-for-adding-path-to-pathdef-m-in-linux).
-    `savepath ~/Documents/MATLAB/pathdef.m`
-- Now follow the build instructions provided below. The prebuilt binaries are no longer shipped.
-
 ## Build Instructions (mandatory)
 
 Steps for building/rebuilding the C-MEX S-Function code. These instructions are only required if you are cloning the repository instead of downloading the release.
@@ -47,7 +28,7 @@ Steps for building/rebuilding the C-MEX S-Function code. These instructions are 
 - Install one of the following C++ Compiler
   - Microsoft&reg; Visual Studio&reg; 2022 or higher (recommended)
   - (or) [MinGW (GCC 12.2.0 or higher)](https://community.chocolatey.org/packages/mingw)
-- Clone this repository
+- Clone this repository or download the source zip  (preferably not in Downloads folder)
     
     `$ git clone git@github.com:mathworks-robotics/mujoco-simulink-blockset.git`
 - Launch MATLAB and open the repository folder
@@ -63,11 +44,13 @@ Steps for building/rebuilding the C-MEX S-Function code. These instructions are 
 - Install the tools required for compiling the S-Function
 
     `$ sudo apt update && sudo apt install build-essential git libglfw3 libglfw3-dev `
-- Clone this repository
+- Clone this repository or download the source zip  (preferably not in Downloads folder)
 
     `$ git clone git@github.com:mathworks-robotics/mujoco-simulink-blockset.git`
 - Launch MATLAB and open the repository folder. Run the install.m script.
     - `>> install`
+- The default pathdef.m is likely not saveable in Linux. Save pathdef.m to new location as given in this [MATLAB answer](https://www.mathworks.com/matlabcentral/answers/1653435-how-to-use-savepath-for-adding-path-to-pathdef-m-in-linux).
+    `savepath ~/Documents/MATLAB/pathdef.m`
 - Open tools/ and run the following commands in MATLAB command Windows
     - `>> setupBuild`
     - `>> mex -setup c++`
