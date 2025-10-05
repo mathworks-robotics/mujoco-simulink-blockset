@@ -6,7 +6,9 @@ This repository provides a Simulink&reg; C-MEX S-Function block interface to the
 
 This blockset enables an easy access to MuJoCo Physics Engine and exposes the GUI, control inputs, sensors and RGB/Depth Cameras from the engine. 
 
-## MathWorks&reg; Products (https://www.mathworks.com)
+## MathWorks&reg; Products
+
+https://matlab.mathworks.com
 
 - MATLAB&reg; (required)
 - Simulink&reg; (required)
@@ -15,7 +17,7 @@ This blockset enables an easy access to MuJoCo Physics Engine and exposes the GU
 - Control System Toolbox&trade; (optional)
 - Simulink&reg; Coder&trade; (optional)
 
-MATLAB R2022b or newer is recommended. Install MATLAB with the above products and then proceed to set up MuJoCo blocks.
+MATLAB R2022b or newer is recommended. Install MATLAB with the above products and then proceed to set up MuJoCo blocks. This blockset cannot be installed in MATLAB Online.
 
 ## Build Instructions (mandatory)
 
